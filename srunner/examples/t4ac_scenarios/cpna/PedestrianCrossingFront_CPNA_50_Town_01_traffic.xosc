@@ -1,14 +1,7 @@
 <?xml version="1.0"?>
 <OpenSCENARIO>
   <FileHeader revMajor="1" revMinor="0" date="2020-03-24T12:00:00" description="CARLA:PedestrianCrossing" author=""/>
-  
-  <ParameterDeclarations>
-    <ParameterDeclaration name="x" parameterType="double" value="110"/>
-    <ParameterDeclaration name="y" parameterType="double" value="52"/>
-    <ParameterDeclaration name="z" parameterType="double" value="0.3"/>
-    <ParameterDeclaration name="theta" parameterType="double" value="1.57079632679"/>
-  </ParameterDeclarations>
-
+  <ParameterDeclarations/>
   <CatalogLocations/>
   <RoadNetwork>
     <LogicFile filepath="Town01"/>
@@ -32,8 +25,97 @@
         </Properties>
       </Vehicle>
     </ScenarioObject>
+	<ScenarioObject name="adversary0">
+      <Vehicle name="vehicle.audi.a2" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="adversary0"/>
+	  <Property name="color" value="255,0,0"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+	<ScenarioObject name="adversary1">
+      <Vehicle name="vehicle.mercedes-benz.coupe" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="adversary0"/>
+	  <Property name="color" value="0,0,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+	<ScenarioObject name="adversary2">
+      <Vehicle name="vehicle.mustang.mustang" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="adversary0"/>
+	  <Property name="color" value="0,255,0"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+	<ScenarioObject name="adversary3">
+      <Vehicle name="vehicle.audi.tt" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="adversary0"/>
+	  <Property name="color" value="255,255,250"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+	<ScenarioObject name="adversary4">
+      <Vehicle name="vehicle.tesla.model3" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="adversary0"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
     <ScenarioObject name="adversary">
-      <Pedestrian model="walker.pedestrian.0001" mass="90.0" name="walker.pedestrian.0001" pedestrianCategory="pedestrian">
+      <Pedestrian model="walker.pedestrian.0024" mass="90.0" name="walker.pedestrian.0001" pedestrianCategory="pedestrian">
         <ParameterDeclarations/>
         <BoundingBox>
           <Center x="1.5" y="0.0" z="0.9"/>
@@ -44,10 +126,7 @@
         </Properties>
       </Pedestrian>
     </ScenarioObject>
-
-    <!-- Additional traffic participants -->
-
-    <ScenarioObject name="adversary01">
+	<ScenarioObject name="adversary01">
       <Pedestrian model="walker.pedestrian.0008" mass="90.0" name="walker.pedestrian.0008" pedestrianCategory="pedestrian">
         <ParameterDeclarations/>
         <BoundingBox>
@@ -83,31 +162,6 @@
         </Properties>
       </Pedestrian>
     </ScenarioObject>
-	<ScenarioObject name="adversary04">
-      <Pedestrian model="walker.pedestrian.0016" mass="90.0" name="walker.pedestrian.0016" pedestrianCategory="pedestrian">
-        <ParameterDeclarations/>
-        <BoundingBox>
-          <Center x="1.5" y="0.0" z="0.9"/>
-          <Dimensions width="2.1" length="4.5" height="1.8"/>
-        </BoundingBox>
-        <Properties>
-          <Property name="type" value="simulation"/>
-        </Properties>
-      </Pedestrian>
-    </ScenarioObject>
-	<ScenarioObject name="adversary05">
-      <Pedestrian model="walker.pedestrian.0011" mass="90.0" name="walker.pedestrian.0016" pedestrianCategory="pedestrian">
-        <ParameterDeclarations/>
-        <BoundingBox>
-          <Center x="1.5" y="0.0" z="0.9"/>
-          <Dimensions width="2.1" length="4.5" height="1.8"/>
-        </BoundingBox>
-        <Properties>
-          <Property name="type" value="simulation"/>
-        </Properties>
-      </Pedestrian>
-    </ScenarioObject>
-
   </Entities>
   <Storyboard>
     <Init>
@@ -117,9 +171,9 @@
             <Environment name="Environment1">
               <TimeOfDay animation="false" dateTime="2019-06-25T12:00:00"/>
               <Weather cloudState="free">
-                <Sun intensity="0.35" azimuth="0" elevation="1.31"/>
+                <Sun intensity="0.35" azimuth="0" elevation="1.57"/>
                 <Fog visualRange="100000.0"/>
-                <Precipitation precipitationType="rain" intensity="0.2"/>
+                <Precipitation precipitationType="dry" intensity="0"/>
               </Weather>
               <RoadCondition frictionScaleFactor="1.0"/>
             </Environment>
@@ -129,7 +183,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="140" y="55" z="0" h="3.14159265359"/>
+                <WorldPosition x="220" y="55" z="0" h="3.14159265359"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -153,19 +207,60 @@
             </ControllerAction>
           </PrivateAction>
         </Private>
-        <Private entityRef="adversary">
+        <Private entityRef="adversary0">
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <!-- <WorldPosition x="110" y="52" z="0.3" h="1.57079632679"/> -->
-                <WorldPosition x="$x" y="$y" z="$z" h="$theta"/>
+                <WorldPosition x="150" y="59.5" z="0.3" h="0"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
         </Private>
-
-        <!-- Additional traffic participants -->
-
+        <Private entityRef="adversary1">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="140" y="59.5" z="0.3" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="adversary2">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="130" y="59.5" z="0.3" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="adversary3">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="120" y="59.5" z="0.3" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="adversary4">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="110" y="59.5" z="0.3" h="0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="adversary">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="115" y="51" z="0.3" h="1.57079632679"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
         <Private entityRef="adversary01">
           <PrivateAction>
             <TeleportAction>
@@ -193,25 +288,6 @@
             </TeleportAction>
           </PrivateAction>
         </Private>
-		<Private entityRef="adversary04">
-          <PrivateAction>
-            <TeleportAction>
-              <Position>
-                <WorldPosition x="124" y="51" z="0.3" h="0"/>
-              </Position>
-            </TeleportAction>
-          </PrivateAction>
-        </Private>
-		<Private entityRef="adversary05">
-          <PrivateAction>
-            <TeleportAction>
-              <Position>
-                <WorldPosition x="128" y="53" z="0.3" h="0"/>
-              </Position>
-            </TeleportAction>
-          </PrivateAction>
-        </Private>
-        
       </Actions>
     </Init>
     <Story name="MyStory">
@@ -226,9 +302,9 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="10.0" dynamicsDimension="distance"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="4.5" dynamicsDimension="distance"/>
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="1.0"/>
+                        <AbsoluteTargetSpeed value="1.39"/>
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -242,9 +318,9 @@
                         <EntityRef entityRef="ego_vehicle"/>
                       </TriggeringEntities>
                       <EntityCondition>
-                        <ReachPositionCondition tolerance="2.0">
+                        <ReachPositionCondition tolerance="6.0">
                           <Position>
-                            <WorldPosition x="125" y="55" z="0" h="180"/>
+                            <WorldPosition x="157" y="55" z="0" h="180"/>
                           </Position>
                         </ReachPositionCondition>
                       </EntityCondition>
@@ -258,7 +334,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="10" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="3" dynamicsDimension="time"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="0.0"/>
                       </SpeedActionTarget>
@@ -281,9 +357,9 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="0.0" dynamicsDimension="distance"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="6.5" dynamicsDimension="distance"/>
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="0.0"/>
+                        <AbsoluteTargetSpeed value="2.0"/>
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
