@@ -178,8 +178,6 @@ class OpenScenarioParser(object):
         """
 
         parameter_dict = dict()
-        if additional_parameter_dict is not None:
-            parameter_dict = additional_parameter_dict
         parameters = xml_tree.find('ParameterDeclarations')
 
         if parameters is None and not parameter_dict:
@@ -193,11 +191,16 @@ class OpenScenarioParser(object):
             value = parameter.attrib.get('value')
             parameter_dict[name] = value
 
+        # Overwrite parameters in parameters_dict by additional_parameters dict
+
+        if additional_parameter_dict is not None:
+            parameter_dict = dict(list(parameter_dict.items()) + list(additional_parameter_dict.items()))
+
         for node in xml_tree.iter():
             for key in node.attrib:
                 for param in sorted(parameter_dict, key=len, reverse=True):
                     if "$" + param in node.attrib[key]:
-                        node.attrib[key] = node.attrib[key].replace("$" + param, parameter_dict[param])
+                        node.attrib[key] = node.attrib[key].replace("$" + param, str(parameter_dict[param]))
 
         return xml_tree, parameter_dict
 

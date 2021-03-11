@@ -29,6 +29,8 @@ import sys
 import time
 import json
 import pkg_resources
+import numpy as np
+import pandas as pd
 
 import carla
 
@@ -77,6 +79,7 @@ class ScenarioRunner(object):
         Setup CARLA client and world
         Setup ScenarioManager
         """
+
         self._args = args
 
         if args.timeout:
@@ -146,9 +149,9 @@ class ScenarioRunner(object):
         # Path of all scenario at "srunner/scenarios" folder + the path of the additional scenario argument
         scenarios_list = glob.glob("{}/srunner/scenarios/*.py".format(os.getenv('SCENARIO_RUNNER_ROOT', "./")))
         scenarios_list.append(self._args.additionalScenario)
-
+        print("Scenario list: ", scenarios_list)
         for scenario_file in scenarios_list:
-
+            print("scenario file: ", scenario_file)
             # Get their module
             module_name = os.path.basename(scenario_file).split('.')[0]
             sys.path.insert(0, os.path.dirname(scenario_file))
@@ -157,6 +160,7 @@ class ScenarioRunner(object):
             # And their members of type class
             for member in inspect.getmembers(scenario_module, inspect.isclass):
                 if scenario in member:
+                    print("Scenario class: ", member[1])
                     return member[1]
 
             # Remove unused Python paths
@@ -370,6 +374,7 @@ class ScenarioRunner(object):
         print("Preparing scenario: " + config.name)
         try:
             self._prepare_ego_vehicles(config.ego_vehicles)
+  
             if self._args.openscenario:
                 scenario = OpenScenario(world=self.world,
                                         ego_vehicles=self.ego_vehicles,
@@ -479,7 +484,25 @@ class ScenarioRunner(object):
             self._cleanup()
             return False
 
-        config = OpenScenarioConfiguration(self._args.openscenario, self.client)
+        if not self._args.openscenarioparams:
+            dirname = os.path.dirname(self._args.openscenario)
+            filename = os.path.basename(self._args.openscenario).split('.')[0]
+            csv_path = os.path.join(dirname + '/' + filename + '.csv')
+
+            if os.path.isfile(csv_path):
+                df = pd.read_csv(csv_path) 
+                row = np.random.randint(len(df.index))
+                column_names = df.columns
+                values = df.iloc[row]
+
+                self._args.openscenarioparams = dict()
+
+                for column,value in zip(column_names,values):
+                    self._args.openscenarioparams[column] = value
+
+        config = OpenScenarioConfiguration(self._args.openscenario, 
+                                           self._args.openscenarioparams,
+                                           self.client)
 
         result = self._load_and_run_scenario(config)
         self._cleanup()
@@ -529,6 +552,7 @@ def main():
     parser.add_argument(
         '--scenario', help='Name of the scenario to be executed. Use the preposition \'group:\' to run all scenarios of one class, e.g. ControlLoss or FollowLeadingVehicle')
     parser.add_argument('--openscenario', help='Provide an OpenSCENARIO definition')
+    parser.add_argument('--openscenarioparams', help='Overwrite the specified OpenSCENARIO parameters in ParameterDeclaration')
     parser.add_argument(
         '--route', help='Run a route as a scenario (input: (route_file,scenario_file,[route id]))', nargs='+', type=str)
 

@@ -1,10 +1,17 @@
 <?xml version="1.0"?>
 <OpenSCENARIO>
-  <FileHeader revMajor="1" revMinor="0" date="2020-03-24T12:00:00" description="CARLA:LaneChangeSimple" author=""/>
-  <ParameterDeclarations/>
+  <FileHeader revMajor="1" revMinor="0" date="2020-03-24T12:00:00" description="CARLA:Static_Obstacle_Avoidance_with_Laterial_Variance" author=""/>
+  
+  <ParameterDeclarations>
+    <ParameterDeclaration name="x_stan" parameterType="double" value="111"/>
+    <ParameterDeclaration name="y_stan" parameterType="double" value="54"/>
+    <ParameterDeclaration name="z_stan" parameterType="double" value="0.3"/>
+    <ParameterDeclaration name="theta_stan" parameterType="double" value="3.14159265359"/>
+  </ParameterDeclarations>
+
   <CatalogLocations/>
   <RoadNetwork>
-    <LogicFile filepath="Town04"/>
+    <LogicFile filepath="Town01"/>
     <SceneGraphFile filepath=""/>
   </RoadNetwork>
   <Entities>
@@ -80,7 +87,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-9.4" y="-152.8" z="0.5" h="1.57079632679"/>
+                <WorldPosition x="180" y="55" z="0" h="3.14159265359"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -108,7 +115,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-9.4" y="-71.0" z="0.5" h="1.57079632679"/>
+                <WorldPosition x="0" y="0" z="0" h="1.57079632679"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -117,7 +124,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-8.2" y="29.2" z="0.5" h="1.57079632679"/>
+                <WorldPosition x="$x_stan" y="$y_stan" z="$z_stan" h="$theta_stan"/>
               </Position>
             </TeleportAction>
           </PrivateAction>

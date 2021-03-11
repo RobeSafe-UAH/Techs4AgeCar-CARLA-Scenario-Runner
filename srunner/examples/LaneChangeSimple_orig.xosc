@@ -8,8 +8,8 @@
     <SceneGraphFile filepath=""/>
   </RoadNetwork>
   <Entities>
-    <ScenarioObject name="ego_vehicle">
-      <Vehicle name="vehicle.audi.a2" vehicleCategory="car">
+    <ScenarioObject name="hero">
+      <Vehicle name="vehicle.tesla.model3" vehicleCategory="car">
         <ParameterDeclarations/>
         <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
         <BoundingBox>
@@ -76,7 +76,7 @@
             </Environment>
           </EnvironmentAction>
         </GlobalAction>
-        <Private entityRef="ego_vehicle">
+        <Private entityRef="hero">
           <PrivateAction>
             <TeleportAction>
               <Position>
@@ -87,7 +87,7 @@
           <PrivateAction>
             <ControllerAction>
               <AssignControllerAction>
-                <Controller name="ego_vehicleAgent">
+                <Controller name="HeroAgent">
                   <Properties>
                     <Property name="module" value="external_control"/>
                   </Properties>
@@ -149,7 +149,7 @@
                   <Condition name="StartCondition" delay="0" conditionEdge="rising">
                     <ByEntityCondition>
                       <TriggeringEntities triggeringEntitiesRule="any">
-                        <EntityRef entityRef="ego_vehicle"/>
+                        <EntityRef entityRef="hero"/>
                       </TriggeringEntities>
                       <EntityCondition>
                         <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="40.0" freespace="false" rule="lessThan"/>
@@ -189,7 +189,7 @@
             <Condition name="OverallStartCondition" delay="0" conditionEdge="rising">
               <ByEntityCondition>
                 <TriggeringEntities triggeringEntitiesRule="any">
-                  <EntityRef entityRef="ego_vehicle"/>
+                  <EntityRef entityRef="hero"/>
                 </TriggeringEntities>
                 <EntityCondition>
                   <TraveledDistanceCondition value="1.0"/>
@@ -208,7 +208,7 @@
             <Condition name="EndCondition" delay="0" conditionEdge="rising">
               <ByEntityCondition>
                 <TriggeringEntities triggeringEntitiesRule="any">
-                  <EntityRef entityRef="ego_vehicle"/>
+                  <EntityRef entityRef="hero"/>
                 </TriggeringEntities>
                 <EntityCondition>
                   <TraveledDistanceCondition value="200.0"/>
