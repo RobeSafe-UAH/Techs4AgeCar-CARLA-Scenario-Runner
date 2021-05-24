@@ -201,9 +201,13 @@ def main():
         metavar='WIDTHxHEIGHT',
         default='1280x720',
         help='window resolution (default: 1280x720)')
+    argparser.add_argument( # Needed for CARLA version
+        '--rolename',
+        metavar='ROLENAME',
+        default='hero',
+        help='Name of the main vehicle')
     args = argparser.parse_args()
-
-    args.rolename = 'hero'      # Needed for CARLA version
+      
     args.filter = "vehicle.*"   # Needed for CARLA version
     args.gamma = 2.2   # Needed for CARLA version
     args.width, args.height = [int(x) for x in args.res.split('x')]

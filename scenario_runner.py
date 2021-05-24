@@ -222,6 +222,7 @@ class ScenarioRunner(object):
                     carla_vehicles = CarlaDataProvider.get_world().get_actors().filter('vehicle.*')
                     for carla_vehicle in carla_vehicles:
                         if carla_vehicle.attributes['role_name'] == ego_vehicle.rolename:
+
                             ego_vehicle_found = True
                             self.ego_vehicles.append(carla_vehicle)
                             break

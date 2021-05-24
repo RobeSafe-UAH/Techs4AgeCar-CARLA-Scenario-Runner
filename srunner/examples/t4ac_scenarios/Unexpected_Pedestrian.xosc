@@ -45,69 +45,6 @@
       </Pedestrian>
     </ScenarioObject>
 
-    <!-- Additional traffic participants -->
-
-    <ScenarioObject name="adversary01">
-      <Pedestrian model="walker.pedestrian.0008" mass="90.0" name="walker.pedestrian.0008" pedestrianCategory="pedestrian">
-        <ParameterDeclarations/>
-        <BoundingBox>
-          <Center x="1.5" y="0.0" z="0.9"/>
-          <Dimensions width="2.1" length="4.5" height="1.8"/>
-        </BoundingBox>
-        <Properties>
-          <Property name="type" value="simulation"/>
-        </Properties>
-      </Pedestrian>
-    </ScenarioObject>
-	<ScenarioObject name="adversary02">
-      <Pedestrian model="walker.pedestrian.0002" mass="90.0" name="walker.pedestrian.0002" pedestrianCategory="pedestrian">
-        <ParameterDeclarations/>
-        <BoundingBox>
-          <Center x="1.5" y="0.0" z="0.9"/>
-          <Dimensions width="2.1" length="4.5" height="1.8"/>
-        </BoundingBox>
-        <Properties>
-          <Property name="type" value="simulation"/>
-        </Properties>
-      </Pedestrian>
-    </ScenarioObject>
-	<ScenarioObject name="adversary03">
-      <Pedestrian model="walker.pedestrian.0020" mass="90.0" name="walker.pedestrian.0020" pedestrianCategory="pedestrian">
-        <ParameterDeclarations/>
-        <BoundingBox>
-          <Center x="1.5" y="0.0" z="0.9"/>
-          <Dimensions width="2.1" length="4.5" height="1.8"/>
-        </BoundingBox>
-        <Properties>
-          <Property name="type" value="simulation"/>
-        </Properties>
-      </Pedestrian>
-    </ScenarioObject>
-	<ScenarioObject name="adversary04">
-      <Pedestrian model="walker.pedestrian.0016" mass="90.0" name="walker.pedestrian.0016" pedestrianCategory="pedestrian">
-        <ParameterDeclarations/>
-        <BoundingBox>
-          <Center x="1.5" y="0.0" z="0.9"/>
-          <Dimensions width="2.1" length="4.5" height="1.8"/>
-        </BoundingBox>
-        <Properties>
-          <Property name="type" value="simulation"/>
-        </Properties>
-      </Pedestrian>
-    </ScenarioObject>
-	<ScenarioObject name="adversary05">
-      <Pedestrian model="walker.pedestrian.0011" mass="90.0" name="walker.pedestrian.0016" pedestrianCategory="pedestrian">
-        <ParameterDeclarations/>
-        <BoundingBox>
-          <Center x="1.5" y="0.0" z="0.9"/>
-          <Dimensions width="2.1" length="4.5" height="1.8"/>
-        </BoundingBox>
-        <Properties>
-          <Property name="type" value="simulation"/>
-        </Properties>
-      </Pedestrian>
-    </ScenarioObject>
-
   </Entities>
   <Storyboard>
     <Init>
@@ -157,56 +94,8 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <!-- <WorldPosition x="110" y="52" z="0.3" h="1.57079632679"/> -->
-                <WorldPosition x="$x" y="$y" z="$z" h="$theta"/>
-              </Position>
-            </TeleportAction>
-          </PrivateAction>
-        </Private>
-
-        <!-- Additional traffic participants -->
-
-        <Private entityRef="adversary01">
-          <PrivateAction>
-            <TeleportAction>
-              <Position>
-                <WorldPosition x="122" y="52" z="0.3" h="3.14"/>
-              </Position>
-            </TeleportAction>
-          </PrivateAction>
-        </Private>
-        <Private entityRef="adversary02">
-          <PrivateAction>
-            <TeleportAction>
-              <Position>
-                <WorldPosition x="120" y="52" z="0.3" h="0"/>
-              </Position>
-            </TeleportAction>
-          </PrivateAction>
-        </Private>
-        <Private entityRef="adversary03">
-          <PrivateAction>
-            <TeleportAction>
-              <Position>
-                <WorldPosition x="130" y="50" z="0.3" h="0"/>
-              </Position>
-            </TeleportAction>
-          </PrivateAction>
-        </Private>
-		<Private entityRef="adversary04">
-          <PrivateAction>
-            <TeleportAction>
-              <Position>
-                <WorldPosition x="124" y="51" z="0.3" h="0"/>
-              </Position>
-            </TeleportAction>
-          </PrivateAction>
-        </Private>
-		<Private entityRef="adversary05">
-          <PrivateAction>
-            <TeleportAction>
-              <Position>
-                <WorldPosition x="128" y="53" z="0.3" h="0"/>
+                <WorldPosition x="110" y="52" z="0.3" h="1.57079632679"/>
+                <!-- <WorldPosition x="$x" y="$y" z="$z" h="$theta"/> -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -226,7 +115,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="10.0" dynamicsDimension="distance"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="4.0" dynamicsDimension="distance"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="1.0"/>
                       </SpeedActionTarget>
@@ -258,7 +147,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="10" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="5" dynamicsDimension="time"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="0.0"/>
                       </SpeedActionTarget>
@@ -281,9 +170,9 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="0.0" dynamicsDimension="distance"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="5.0" dynamicsDimension="distance"/>
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="0.0"/>
+                        <AbsoluteTargetSpeed value="1.0"/>
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
