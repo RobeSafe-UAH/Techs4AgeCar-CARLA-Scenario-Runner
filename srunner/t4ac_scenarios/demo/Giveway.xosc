@@ -67,7 +67,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="187.5" y="-116.8" z="0" h="2.82743"/>  <!-- INITIAL POSE EGO_VEHICLE -->
+                <WorldPosition x="187.5" y="-116.8" z="0" h="1.27409"/>  <!-- INITIAL POSE EGO_VEHICLE -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -95,7 +95,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="242.2" y="-58.7" z="0" h="5.61996"/>   <!-- INITIAL POSE adversary -->
+                <WorldPosition x="242.2" y="-58.7" z="0" h="-2.05949"/>   <!-- INITIAL POSE adversary -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -114,9 +114,9 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="10" dynamicsDimension="distance" />
+                      <SpeedActionDynamics dynamicsShape="step" value="10000" dynamicsDimension="distance" />
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="30" />
+                        <AbsoluteTargetSpeed value="5" />
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -144,16 +144,16 @@
                     <AssignRouteAction>
                       <Route name="StraightRoute" closed="false">
                         <ParameterDeclarations />
-                        <Waypoint routeStrategy="fastest">
-                          <Position>
-                            <WorldPosition x="-78.0" y="12.96" z="0.6" h="3.14" />
-                          </Position>
-                        </Waypoint>
-                        <Waypoint routeStrategy="fastest">
-                          <Position>
-                            <WorldPosition x="-11.42" y="43.82" z="0.6" h="1.57" />
-                          </Position>
-                        </Waypoint>
+                          <Waypoint routeStrategy="fastest">
+                            <Position>
+                              <WorldPosition x="-78.0" y="12.96" z="0.6" h="3.14" />
+                            </Position>
+                          </Waypoint>
+                          <Waypoint routeStrategy="fastest">
+                            <Position>
+                              <WorldPosition x="-11.42" y="43.82" z="0.6" h="1.57" />
+                            </Position>
+                          </Waypoint>
                       </Route>
                     </AssignRouteAction>
                   </RoutingAction>
@@ -198,7 +198,7 @@
                   <EntityRef entityRef="$vehicle_name"/>
                 </TriggeringEntities>
                 <EntityCondition>
-                  <TraveledDistanceCondition value="200.0"/>
+                  <TraveledDistanceCondition value="20000.0"/>
                 </EntityCondition>
               </ByEntityCondition>
             </Condition>
