@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OpenSCENARIO xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Schema/OpenSCENARIO.xsd">
+  <FileHeader revMajor="1" revMinor="1" date="2021-01-13T10:00:00" description="Trajectory Catalog" author="ASAM e.V." />
+  <Catalog name="TrajectoryCatalog">
+    <Trajectory name="FabriksgatanNorthToSouth" closed="false">
+      <Shape>
+        <Polyline>
+          <Vertex time="0.0">
+            <Position>
+              <WorldPosition x="234.0" y="199.0" z="0" h="3.14159265359"/>
+            </Position>
+          </Vertex>
+          <Vertex time="5.0">
+            <Position>
+              <WorldPosition x="279.5" y="199.0" z="0" h="3.14159265359"/>
+            </Position>
+          </Vertex>
+          <Vertex time="10.0">
+            <Position>
+              <WorldPosition x="317.5" y="199.0" z="0" h="3.14159265359"/>
+            </Position>
+          </Vertex>
+        </Polyline>
+      </Shape>
+    </Trajectory>
+  </Catalog>
+</OpenSCENARIO>
