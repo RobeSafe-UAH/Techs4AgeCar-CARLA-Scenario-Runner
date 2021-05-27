@@ -500,6 +500,8 @@ class ScenarioRunner(object):
 
                 for column,value in zip(column_names,values):
                     self._args.openscenarioparams[column] = value
+        else:
+            self._args.openscenarioparams = json.loads(self._args.openscenarioparams) # From str to dict
 
         config = OpenScenarioConfiguration(self._args.openscenario, 
                                            self._args.openscenarioparams,
