@@ -2,9 +2,9 @@
 <OpenSCENARIO>
   <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - Overtaking Car to Bike Rear Moving" author=""/>
   <ParameterDeclarations>
-    <ParameterDeclaration name="GVT1_Speed" parameterType="double" value="5.55"/>
+    <ParameterDeclaration name="GVT1_Speed" parameterType="double" value="4.55"/>
     <ParameterDeclaration name="GVT2_Speed" parameterType="double" value="10.55"/>
-    <ParameterDeclaration name="vehicle_name" parameterType="string" value="hero" />   <!-- hero  ;  ego_vehicle -->
+    <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
   <RoadNetwork>
