@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSCENARIO>
-  <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - Adaptative Cruise Control Car to Car Rear Braking" author="J Felipe Arango"/>
+  <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - Stop Car to Car Farside" author="J Felipe Arango"/>
   <ParameterDeclarations>
-    <ParameterDeclaration name="leadingSpeed" parameterType="double" value="4.17"/>
+    <ParameterDeclaration name="leadingSpeed" parameterType="double" value="8.33"/>
     <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
@@ -68,7 +68,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-374.2" y="-305.1" z="0" h="-0.628319"/>
+                <WorldPosition x="-227.4" y="-330.0" z="0" h="3.9968"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -96,7 +96,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-319.3" y="-346.2" z="0" h="-0.628319"/>
+                <WorldPosition x="-345.5" y="-326.5" z="0.0" h="5.63741"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -115,7 +115,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="80" dynamicsDimension="distance"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="200" dynamicsDimension="distance"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="$leadingSpeed"/>
                       </SpeedActionTarget>
@@ -131,7 +131,7 @@
                         <EntityRef entityRef="$vehicle_name"/>
                       </TriggeringEntities>
                       <EntityCondition>
-                        <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="30.0" freespace="false" rule="lessThan"/>
+                        <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="200.0" freespace="false" rule="lessThan"/>
                       </EntityCondition>
                     </ByEntityCondition>
                   </Condition>

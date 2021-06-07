@@ -6,7 +6,7 @@
   </ParameterDeclarations>
   <CatalogLocations/>
   <RoadNetwork>
-    <LogicFile filepath="CampusUAH_v1_3"/>
+    <LogicFile filepath="CampusUAH_v1_4"/>
     <SceneGraphFile filepath=""/>
   </RoadNetwork>
   <Entities>
@@ -121,9 +121,9 @@
             <Environment name="Environment1">	<!-- WEATHER -->
               <TimeOfDay animation="false" dateTime="2019-06-25T12:00:00"/>
               <Weather cloudState="free"> <!-- cloudy ; free ; overcast  ; rainy  ;  skyOff -->
-                <Sun intensity="0.45" azimuth="0" elevation="1.31"/>  <!-- day (elevation=1.31) ; night (elevation=-1.31) -->
+                <Sun intensity="0.85" azimuth="0" elevation="1.31"/>  <!-- day (elevation=1.31) ; night (elevation=-1.31) -->
                 <Fog visualRange="100000.0"/>   <!-- clear (visualRange=100000.0) ; foggy (visualRange=20.0) -->
-                <Precipitation precipitationType="rain" intensity="0.2"/>  <!-- dry ; rain ; snow -->
+                <Precipitation precipitationType="dry" intensity="0.2"/>  <!-- dry ; rain ; snow -->
               </Weather>
               <RoadCondition frictionScaleFactor="1.0"/>
             </Environment>
