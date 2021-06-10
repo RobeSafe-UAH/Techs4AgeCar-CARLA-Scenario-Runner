@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSCENARIO>
-  <FileHeader revMajor="1" revMinor="0" date="2021-04-24T12:00:00" description="CARLA: t4ac - Unexpected Pedestrian Car to Pedestrian Nearside Adult" author="J Felipe Arango"/>
+  <FileHeader revMajor="1" revMinor="0" date="2021-04-24T12:00:00" description="CARLA: t4ac - CrossWalk Scenario for Robocity2030 2021" author="J Felipe Arango"/>
   <ParameterDeclarations>
     <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
   <RoadNetwork>
-    <LogicFile filepath="CampusUAH_v1_4"/>
+    <LogicFile filepath="CampusUAH_v1_5"/>
     <SceneGraphFile filepath=""/>
   </RoadNetwork>
   <Entities>
@@ -40,7 +40,7 @@
         </Properties>
       </Pedestrian>
     </ScenarioObject>
-    <ScenarioObject name="adversary1">
+    <ScenarioObject name="pedestrian_walking_1">
       <Pedestrian model="walker.pedestrian.0002" mass="90.0" name="walker.pedestrian.0002" pedestrianCategory="pedestrian">
         <ParameterDeclarations/>
         <BoundingBox>
@@ -52,7 +52,7 @@
         </Properties>
       </Pedestrian>
     </ScenarioObject>
-    <ScenarioObject name="adversary2">
+    <ScenarioObject name="pedestrian_walking_2">
       <Pedestrian model="walker.pedestrian.0003" mass="90.0" name="walker.pedestrian.0002" pedestrianCategory="pedestrian">
         <ParameterDeclarations/>
         <BoundingBox>
@@ -64,7 +64,7 @@
         </Properties>
       </Pedestrian>
     </ScenarioObject>
-    <ScenarioObject name="adversary3">
+    <ScenarioObject name="pedestrian_walking_3">
       <Pedestrian model="walker.pedestrian.0004" mass="90.0" name="walker.pedestrian.0002" pedestrianCategory="pedestrian">
         <ParameterDeclarations/>
         <BoundingBox>
@@ -76,7 +76,7 @@
         </Properties>
       </Pedestrian>
     </ScenarioObject>
-    <ScenarioObject name="adversary4">
+    <ScenarioObject name="car_parking_1">
       <Vehicle name="vehicle.mustang.mustang" vehicleCategory="car">
         <ParameterDeclarations/>
         <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
@@ -94,7 +94,7 @@
         </Properties>
       </Vehicle>
     </ScenarioObject>
-    <ScenarioObject name="adversary5">
+    <ScenarioObject name="car_parking_2">
       <Vehicle name="vehicle.tesla.model3" vehicleCategory="car">
         <ParameterDeclarations/>
         <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
@@ -109,6 +109,24 @@
         <Properties>
           <Property name="type" value="simulation"/>
           <Property name="color" value="25,123,80"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+    <ScenarioObject name="car_moving">
+      <Vehicle name="vehicle.tesla.model3" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="simulation"/>
+          <Property name="color" value="255,0,0"/>
         </Properties>
       </Vehicle>
     </ScenarioObject>
@@ -161,52 +179,61 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="181" y="-189" z="0.3" h="2.82743"/>   <!-- INITIAL POSE PEDESTRIAN -->
+                <WorldPosition x="181" y="-189" z="0.3" h="2.82743"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
         </Private>
-        <Private entityRef="adversary1">
+        <Private entityRef="pedestrian_walking_1">
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="189.2" y="-170.1" z="0.3" h="-1.8675023"/>   <!-- INITIAL POSE PEDESTRIAN -->
+                <WorldPosition x="183.0" y="-198.3" z="0.3" h="1.27409"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
         </Private>
-        <Private entityRef="adversary2">
+        <Private entityRef="pedestrian_walking_2">
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="188.3" y="-173.3" z="0.3" h="1.82743"/>   <!-- INITIAL POSE PEDESTRIAN -->
+                <WorldPosition x="190.0" y="-172.8" z="0.3" h="4.43314"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
         </Private>
-        <Private entityRef="adversary3">
+        <Private entityRef="pedestrian_walking_3">
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="164" y="-183.5" z="0.3" h="0.435"/>   <!-- INITIAL POSE PEDESTRIAN -->
+                <WorldPosition x="164" y="-183.5" z="0.3" h="0.435"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
         </Private>
-        <Private entityRef="adversary4">
+        <Private entityRef="car_parking_1">
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="182.9" y="-178" z="0.3" h="-1.8675"/>   <!-- INITIAL POSE PEDESTRIAN -->
+                <WorldPosition x="182.9" y="-178" z="0.3" h="-1.8675"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
         </Private>
-        <Private entityRef="adversary5">
+        <Private entityRef="car_parking_2">
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="186.8" y="-165.5" z="0.3" h="-1.8675"/>   <!-- INITIAL POSE PEDESTRIAN -->
+                <WorldPosition x="186.8" y="-165.5" z="0.3" h="-1.8675"/>   <!-- INITIAL POSE  -->
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="car_moving">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="160.8" y="-199.4" z="0.3" h="0.872665"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -274,15 +301,23 @@
                   </Condition>
                 </ConditionGroup>
               </StartTrigger>
-            </Event>
-            <Event name="PedestrianWalksAway" priority="overwrite">
-              <Action name="PedestrianStartsWalkingAway">
+            </Event>  
+          </Maneuver>
+        </ManeuverGroup>
+        <ManeuverGroup maximumExecutionCount="1" name="Pedestrians_Maneuver">
+          <Actors selectTriggeringEntities="false">
+            <EntityRef entityRef="pedestrian_walking_1"/>
+            <EntityRef entityRef="pedestrian_walking_2"/>
+          </Actors>
+          <Maneuver name="PedestrianWalkingManeuver">
+            <Event name="PedestrianWalkingInit" priority="overwrite">
+              <Action name="PedestrianWalkingInit">
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="6.5" dynamicsDimension="distance"/> <!-- SECOND DINTANCE (m) AFTER STOP -->
+                      <SpeedActionDynamics dynamicsShape="step" value="20.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="2.0"/> <!-- PEDESTRIAN SPEED (m/s) -->
+                        <AbsoluteTargetSpeed value="1.5"/>  <!-- PEDESTRIAN SPEED (m/s) -->
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -290,32 +325,34 @@
               </Action>
               <StartTrigger>
                 <ConditionGroup>
-                  <Condition name="StartCondition" delay="0" conditionEdge="rising">
+                  <Condition name="PedestrianWalkingInitCondition" delay="0" conditionEdge="rising">
                     <ByEntityCondition>
                       <TriggeringEntities triggeringEntitiesRule="any">
                         <EntityRef entityRef="$vehicle_name"/>
                       </TriggeringEntities>
                       <EntityCondition>
-                        <StandStillCondition duration="0.1"/>
+                        <TraveledDistanceCondition value="1.0"/>
                       </EntityCondition>
                     </ByEntityCondition>
-                  </Condition>
-                  <Condition name="AfterPedestrianStopsAndWaits" delay="0" conditionEdge="rising">
-                    <ByValueCondition>
-                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="PedestrianStopsAndWaits" state="completeState"/>
-                    </ByValueCondition>
                   </Condition>
                 </ConditionGroup>
               </StartTrigger>
             </Event>
-            <Event name="PedestrianWaits" priority="overwrite">
-              <Action name="PedestrianWaits">
+          </Maneuver>
+        </ManeuverGroup>
+        <ManeuverGroup name="Cars_Maneuver" maximumExecutionCount="1">
+          <Actors selectTriggeringEntities="false">
+            <EntityRef entityRef="car_moving"/>
+          </Actors>
+          <Maneuver name="MovingVehicleManeuver">
+            <Event name="MovingVehicleKeepsVelocity" priority="overwrite">
+              <Action name="MovingVehicleKeepsVelocity">
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="10" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="200" dynamicsDimension="distance"/>
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="0.0"/>
+                        <AbsoluteTargetSpeed value="8.33333"/>
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -323,20 +360,15 @@
               </Action>
               <StartTrigger>
                 <ConditionGroup>
-                  <Condition name="StartCondition" delay="0" conditionEdge="rising">
+                  <Condition name="StartConditionMovingehicleKeepsVelocity" delay="0" conditionEdge="rising">
                     <ByEntityCondition>
                       <TriggeringEntities triggeringEntitiesRule="any">
-                        <EntityRef entityRef="adversary"/>
+                        <EntityRef entityRef="$vehicle_name"/>
                       </TriggeringEntities>
                       <EntityCondition>
-                        <StandStillCondition duration="0.1"/>
+                        <TraveledDistanceCondition value="1.0"/>
                       </EntityCondition>
                     </ByEntityCondition>
-                  </Condition>
-                  <Condition name="AfterPedestrianStartsWalking" delay="0" conditionEdge="rising">
-                    <ByValueCondition>
-                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="PedestrianStartsWalkingAway" state="completeState"/>
-                    </ByValueCondition>
                   </Condition>
                 </ConditionGroup>
               </StartTrigger>
@@ -351,7 +383,7 @@
                   <EntityRef entityRef="$vehicle_name"/>
                 </TriggeringEntities>
                 <EntityCondition>
-                  <TraveledDistanceCondition value="10.0"/>
+                  <TraveledDistanceCondition value="1.0"/>
                 </EntityCondition>
               </ByEntityCondition>
             </Condition>
