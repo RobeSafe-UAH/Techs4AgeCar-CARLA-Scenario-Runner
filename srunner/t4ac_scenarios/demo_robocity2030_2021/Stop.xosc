@@ -158,7 +158,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-80.0" y="-451.4" z="0" h="3.9968"/>
+                <WorldPosition x="-64.3" y="-433.4" z="0" h="3.9968"/>
               </Position>
             </TeleportAction>
           </PrivateAction>

@@ -179,7 +179,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="170.8" y="-149.6" z="0.3" h="6.00393"/>   <!-- INITIAL POSE  -->
+                <WorldPosition x="171.9" y="-145.2" z="0.3" h="6.00393"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -252,9 +252,9 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="30.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
+                      <SpeedActionDynamics dynamicsShape="step" value="6.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="2.0"/>  <!-- PEDESTRIAN SPEED (m/s) -->
+                        <AbsoluteTargetSpeed value="1.5"/>  <!-- PEDESTRIAN SPEED (m/s) -->
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -305,7 +305,7 @@
                     <SpeedAction>
                       <SpeedActionDynamics dynamicsShape="step" value="6.5" dynamicsDimension="distance"/> <!-- SECOND DINTANCE (m) AFTER STOP -->
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="2.0"/> <!-- PEDESTRIAN SPEED (m/s) -->
+                        <AbsoluteTargetSpeed value="1.5"/> <!-- PEDESTRIAN SPEED (m/s) -->
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
