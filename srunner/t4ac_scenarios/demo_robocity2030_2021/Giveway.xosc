@@ -2,7 +2,7 @@
 <OpenSCENARIO>
   <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - GiveWay Scenario" author="J Felipe Arango"/>
   <ParameterDeclarations>
-    <ParameterDeclaration name="adversary_speed" parameterType="double" value="6.94444"/>
+    <ParameterDeclaration name="adversary_speed" parameterType="double" value="5.24444"/>
     <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
@@ -227,7 +227,7 @@
                         <EntityRef entityRef="$vehicle_name"/>
                       </TriggeringEntities>
                       <EntityCondition>
-                        <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="180.0" freespace="false" rule="lessThan"/>
+                        <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="200.0" freespace="false" rule="lessThan"/>
                       </EntityCondition>
                     </ByEntityCondition>
                   </Condition>

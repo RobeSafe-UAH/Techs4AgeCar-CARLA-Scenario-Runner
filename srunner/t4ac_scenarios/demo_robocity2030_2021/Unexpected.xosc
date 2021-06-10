@@ -252,9 +252,9 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="20.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
+                      <SpeedActionDynamics dynamicsShape="step" value="30.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="1.5"/>  <!-- PEDESTRIAN SPEED (m/s) -->
+                        <AbsoluteTargetSpeed value="2.0"/>  <!-- PEDESTRIAN SPEED (m/s) -->
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -268,7 +268,7 @@
                         <EntityRef entityRef="$vehicle_name"/>
                       </TriggeringEntities>
                       <EntityCondition>
-                        <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="25.0" freespace="false" rule="lessThan"/>
+                        <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="35.0" freespace="false" rule="lessThan"/>
                       </EntityCondition>
                     </ByEntityCondition>
                   </Condition>
