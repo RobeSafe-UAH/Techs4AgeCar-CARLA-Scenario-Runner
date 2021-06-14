@@ -2,7 +2,7 @@
 <OpenSCENARIO>
   <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - Stop Scenario for Robocity2030 2021" author="J Felipe Arango"/>
   <ParameterDeclarations>
-    <ParameterDeclaration name="leadingSpeed" parameterType="double" value="8.33"/>
+    <ParameterDeclaration name="leadingSpeed" parameterType="double" value="3.5"/>
     <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
@@ -158,7 +158,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-64.3" y="-433.4" z="0" h="3.9968"/>
+                <WorldPosition x="-28.4" y="-390.3" z="0" h="3.9968"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -370,7 +370,7 @@
                   <EntityRef entityRef="$vehicle_name"/>
                 </TriggeringEntities>
                 <EntityCondition>
-                  <TraveledDistanceCondition value="1000.0"/>
+                  <TraveledDistanceCondition value="10000.0"/>
                 </EntityCondition>
               </ByEntityCondition>
             </Condition>
