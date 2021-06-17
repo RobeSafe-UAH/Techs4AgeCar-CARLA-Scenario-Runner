@@ -8,7 +8,7 @@
   </ParameterDeclarations>
   <CatalogLocations/>
   <RoadNetwork>
-    <LogicFile filepath="CampusUAH_v1_0"/>
+    <LogicFile filepath="CampusUAH_v1_5"/>
     <SceneGraphFile filepath=""/>
   </RoadNetwork>
   <Entities>
@@ -281,7 +281,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="3" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="3.5" dynamicsDimension="time"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="0"/>
                       </SpeedActionTarget>
@@ -430,7 +430,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="15" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="10" dynamicsDimension="time"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="$adversary_car_speed_2"/>
                       </SpeedActionTarget>
@@ -455,7 +455,7 @@
                     <SpeedAction>
                       <SpeedActionDynamics dynamicsShape="step" value="1000" dynamicsDimension="time"/>
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="0"/>
+                        <AbsoluteTargetSpeed value="3"/>
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
