@@ -66,6 +66,30 @@
         </Properties>
       </Vehicle>
     </ScenarioObject>
+    <ScenarioObject name="adversary_pedestrian_1">
+      <Pedestrian model="walker.pedestrian.0001" mass="90.0" name="walker.pedestrian.0002" pedestrianCategory="pedestrian">
+        <ParameterDeclarations/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Properties>
+          <Property name="type" value="simulation"/>
+        </Properties>
+      </Pedestrian>
+    </ScenarioObject>
+    <ScenarioObject name="adversary_pedestrian_2">
+      <Pedestrian model="walker.pedestrian.0001" mass="90.0" name="walker.pedestrian.0002" pedestrianCategory="pedestrian">
+        <ParameterDeclarations/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Properties>
+          <Property name="type" value="simulation"/>
+        </Properties>
+      </Pedestrian>
+    </ScenarioObject>
     <ScenarioObject name="car_parking_1">
       <Vehicle name="vehicle.seat.leon" vehicleCategory="car">
         <ParameterDeclarations/>
@@ -185,6 +209,24 @@
             <TeleportAction>
               <Position>
                 <WorldPosition x="189.3" y="-148.7" z="0" h="-1.8675023"/>  <!-- INITIAL POSE  -->
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="adversary_pedestrian_1">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="181" y="-189" z="0.3" h="2.82743"/>   <!-- INITIAL POSE  -->
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="adversary_pedestrian_2">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="171.9" y="-145.2" z="0.3" h="6.00393"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -388,7 +430,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="20" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="15" dynamicsDimension="time"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="$adversary_car_speed_2"/>
                       </SpeedActionTarget>
@@ -424,6 +466,196 @@
                   <Condition name="AfterAdversaryVehicleACC" delay="0" conditionEdge="rising">
                     <ByValueCondition>
                       <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleACC" state="endTransition"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+          </Maneuver>
+        </ManeuverGroup>
+        <ManeuverGroup maximumExecutionCount="1" name="ManeuverSequence_crosswalk">
+          <Actors selectTriggeringEntities="false">
+            <EntityRef entityRef="adversary_pedestrian_1"/>
+          </Actors>
+          <Maneuver name="PedestrianCrossingManeuver_1">
+            <Event name="PedestrianStartsWalking_1" priority="overwrite">
+              <Action name="PedestrianStartsWalking_1">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="20.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="1.5"/>  <!-- PEDESTRIAN SPEED (m/s) -->
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="StartConditio_crosswalk" delay="0" conditionEdge="rising">
+                    <ByEntityCondition>
+                      <TriggeringEntities triggeringEntitiesRule="any">
+                        <EntityRef entityRef="$vehicle_name"/>
+                      </TriggeringEntities>
+                      <EntityCondition>
+                        <ReachPositionCondition tolerance="2.0">
+                          <Position>
+                            <WorldPosition x="182.2" y="-170.1" z="0" h="180"/>  <!-- EGO_VEHICLE POSE TO STAR WALK PEDESTRIAN -->
+                          </Position>
+                        </ReachPositionCondition>
+                      </EntityCondition>
+                    </ByEntityCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="PedestrianStopsAndWaits_1" priority="overwrite">
+              <Action name="PedestrianStopsAndWaits_1">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="20" dynamicsDimension="time"/> <!-- WAITING TIME(seg) -->
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="0.0"/>
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="AfterPedestrianWalks_1" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="PedestrianStartsWalking_1" state="completeState"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>  
+          </Maneuver>
+        </ManeuverGroup>
+        <ManeuverGroup maximumExecutionCount="1" name="ManeuverSequence_unexpected">
+          <Actors selectTriggeringEntities="false">
+            <EntityRef entityRef="adversary_pedestrian_2"/>
+          </Actors>
+          <Maneuver name="PedestrianCrossingManeuver_2">
+            <Event name="PedestrianStartsWalking_2" priority="overwrite">
+              <Action name="PedestrianStartsWalking_2">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="6.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="1.5"/>  <!-- PEDESTRIAN SPEED (m/s) -->
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="StartCondition_2" delay="0" conditionEdge="rising">
+                    <ByEntityCondition>
+                      <TriggeringEntities triggeringEntitiesRule="any">
+                        <EntityRef entityRef="$vehicle_name"/>
+                      </TriggeringEntities>
+                      <EntityCondition>
+                        <ReachPositionCondition tolerance="2.0">
+                          <Position>
+                            <WorldPosition x="171.5" y="-168.3" z="0" h="0"/>  <!-- EGO_VEHICLE POSE TO STAR WALK PEDESTRIAN -->
+                          </Position>
+                        </ReachPositionCondition>
+                      </EntityCondition>
+                    </ByEntityCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="PedestrianStopsAndWaits_2" priority="overwrite">
+              <Action name="PedestrianStopsAndWaits_2">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="3" dynamicsDimension="time"/> <!-- WAITING TIME(seg) -->
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="0.0"/>
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="AfterPedestrianWalks_2" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="PedestrianStartsWalking_2" state="completeState"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="PedestrianWalksAway_2" priority="overwrite">
+              <Action name="PedestrianStartsWalkingAway_2">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="6.5" dynamicsDimension="distance"/> <!-- SECOND DINTANCE (m) AFTER STOP -->
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="1.5"/> <!-- PEDESTRIAN SPEED (m/s) -->
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="StartCondition_2" delay="0" conditionEdge="rising">
+                    <ByEntityCondition>
+                      <TriggeringEntities triggeringEntitiesRule="any">
+                        <EntityRef entityRef="$vehicle_name"/>
+                      </TriggeringEntities>
+                      <EntityCondition>
+                        <StandStillCondition duration="0.1"/>
+                      </EntityCondition>
+                    </ByEntityCondition>
+                  </Condition>
+                  <Condition name="AfterPedestrianStopsAndWaits_2" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="PedestrianStopsAndWaits_2" state="completeState"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="PedestrianWaits_2" priority="overwrite">
+              <Action name="PedestrianWaits_2">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="10" dynamicsDimension="time"/>
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="0.0"/>
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="StartCondition_2" delay="0" conditionEdge="rising">
+                    <ByEntityCondition>
+                      <TriggeringEntities triggeringEntitiesRule="any">
+                        <EntityRef entityRef="adversary_pedestrian_2"/>
+                      </TriggeringEntities>
+                      <EntityCondition>
+                        <StandStillCondition duration="0.1"/>
+                      </EntityCondition>
+                    </ByEntityCondition>
+                  </Condition>
+                  <Condition name="AfterPedestrianStartsWalking_2" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="PedestrianStartsWalkingAway_2" state="completeState"/>
                     </ByValueCondition>
                   </Condition>
                 </ConditionGroup>
