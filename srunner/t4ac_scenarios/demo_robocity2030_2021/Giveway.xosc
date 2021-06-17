@@ -2,7 +2,7 @@
 <OpenSCENARIO>
   <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - GiveWay Scenario" author="J Felipe Arango"/>
   <ParameterDeclarations>
-    <ParameterDeclaration name="adversary_speed" parameterType="double" value="5.4"/>
+    <ParameterDeclaration name="adversary_speed" parameterType="double" value="4.2"/>
     <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
@@ -183,7 +183,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="187.3" y="-86.7" z="0.3" h="1.27409"/>   <!-- INITIAL POSE  -->
+                <WorldPosition x="184.7" y="-96.2" z="0.3" h="1.27409"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
