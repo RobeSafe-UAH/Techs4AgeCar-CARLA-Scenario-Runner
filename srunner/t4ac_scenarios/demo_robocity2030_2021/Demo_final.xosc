@@ -8,7 +8,7 @@
   </ParameterDeclarations>
   <CatalogLocations/>
   <RoadNetwork>
-    <LogicFile filepath="CampusUAH_v1_5"/>
+    <LogicFile filepath="CampusUAH_v1_0"/>
     <SceneGraphFile filepath=""/>
   </RoadNetwork>
   <Entities>
@@ -234,14 +234,14 @@
             <EntityRef entityRef="adversary_car_1"/>
           </Actors>
           <Maneuver name="AdversaryVehicleManeuver_1">
-            <Event name="AdversaryVehicleGiveWay" priority="overwrite">
-              <Action name="AdversaryVehicleGiveWay">
+            <Event name="AdversaryVehicleGiveWayWait" priority="overwrite">
+              <Action name="AdversaryVehicleGiveWayWait">
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="25" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="3" dynamicsDimension="time"/>
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="$adversary_car_speed_1"/>
+                        <AbsoluteTargetSpeed value="0"/>
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -262,6 +262,29 @@
                 </ConditionGroup>
               </StartTrigger>
             </Event>
+            <Event name="AdversaryVehicleGiveWay" priority="overwrite">
+              <Action name="AdversaryVehicleGiveWay">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="25" dynamicsDimension="time"/>
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="$adversary_car_speed_1"/>
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="AfterAdversaryVehicleGiveWayWait" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleGiveWayWait" state="endTransition"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
             <Event name="AdversaryVehicleGiveWayTeletransport" priority="overwrite">
               <Action name="AdversaryVehicleGiveWayTeletransport">
                 <PrivateAction>
@@ -274,7 +297,7 @@
               </Action>
               <StartTrigger>
                 <ConditionGroup>
-                  <Condition name="AfterAdversaryVehicleGiveWayAccele" delay="0" conditionEdge="rising">
+                  <Condition name="AfterAdversaryVehicleGiveWay" delay="0" conditionEdge="rising">
                     <ByValueCondition>
                       <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleGiveWay" state="endTransition"/>
                     </ByValueCondition>
