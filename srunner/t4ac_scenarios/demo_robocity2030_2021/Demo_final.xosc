@@ -3,12 +3,12 @@
   <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - Demo Robocity2030 2021 Scenario" author="J Felipe Arango"/>
   <ParameterDeclarations>
     <ParameterDeclaration name="adversary_car_speed_1" parameterType="double" value="8.33"/>
-    <ParameterDeclaration name="adversary_car_speed_2" parameterType="double" value="2.0"/>
+    <ParameterDeclaration name="adversary_car_speed_2" parameterType="double" value="4.16"/>
     <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
   <RoadNetwork>
-    <LogicFile filepath="CampusUAH_v1_0"/>
+    <LogicFile filepath="CampusUAH_v1_5"/>
     <SceneGraphFile filepath=""/>
   </RoadNetwork>
   <Entities>
@@ -342,7 +342,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="10" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="7" dynamicsDimension="time"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="0"/>
                       </SpeedActionTarget>
@@ -365,7 +365,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="25" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="20" dynamicsDimension="time"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="$adversary_car_speed_2"/>
                       </SpeedActionTarget>
