@@ -2,12 +2,13 @@
 <OpenSCENARIO>
   <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - Demo Robocity2030 2021 Scenario" author="J Felipe Arango"/>
   <ParameterDeclarations>
-    <ParameterDeclaration name="adversary_speed" parameterType="double" value="4.2"/>
+    <ParameterDeclaration name="adversary_car_speed_1" parameterType="double" value="8.33"/>
+    <ParameterDeclaration name="adversary_car_speed_2" parameterType="double" value="2.0"/>
     <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
   <RoadNetwork>
-    <LogicFile filepath="CampusUAH_v1_5"/>
+    <LogicFile filepath="CampusUAH_v1_0"/>
     <SceneGraphFile filepath=""/>
   </RoadNetwork>
   <Entities>
@@ -29,7 +30,25 @@
         </Properties>
       </Vehicle>
     </ScenarioObject>
-    <ScenarioObject name="adversary">
+    <ScenarioObject name="adversary_car_1">
+      <Vehicle name="vehicle.bmw.grandtourer" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="simulation"/>
+          <Property name="color" value="255,255,255"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+    <ScenarioObject name="adversary_car_2">
       <Vehicle name="vehicle.bmw.grandtourer" vehicleCategory="car">
         <ParameterDeclarations/>
         <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
@@ -152,11 +171,20 @@
             </ControllerAction>
           </PrivateAction>
         </Private>
-        <Private entityRef="adversary">
+        <Private entityRef="adversary_car_1">
           <PrivateAction>
             <TeleportAction>
               <Position>
                 <WorldPosition x="242.2" y="-58.7" z="0" h="-2.05949"/>   <!-- INITIAL POSE  -->
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="adversary_car_2">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="189.3" y="-148.7" z="0" h="-1.8675023"/>  <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -201,19 +229,19 @@
     </Init>
     <Story name="MyStory">
       <Act name="Behavior">
-        <ManeuverGroup name="ManeuverSequence" maximumExecutionCount="1">
+        <ManeuverGroup name="ManeuverSequence_1" maximumExecutionCount="1">
           <Actors selectTriggeringEntities="false">
-            <EntityRef entityRef="adversary"/>
+            <EntityRef entityRef="adversary_car_1"/>
           </Actors>
-          <Maneuver name="FollowLeadingVehicleManeuver">
-            <Event name="LeadingVehicleKeepsVelocity" priority="overwrite">
-              <Action name="LeadingVehicleKeepsVelocity">
+          <Maneuver name="AdversaryVehicleManeuver_1">
+            <Event name="AdversaryVehicleGiveWay" priority="overwrite">
+              <Action name="AdversaryVehicleGiveWay">
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="200" dynamicsDimension="distance"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="25" dynamicsDimension="time"/>
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="$adversary_speed"/>
+                        <AbsoluteTargetSpeed value="$adversary_car_speed_1"/>
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -221,15 +249,159 @@
               </Action>
               <StartTrigger>
                 <ConditionGroup>
-                  <Condition name="StartConditionLeadingVehicleKeepsVelocity" delay="0" conditionEdge="rising">
+                  <Condition name="StartConditionAdversaryVehicleGiveWay" delay="0" conditionEdge="rising">
                     <ByEntityCondition>
                       <TriggeringEntities triggeringEntitiesRule="any">
                         <EntityRef entityRef="$vehicle_name"/>
                       </TriggeringEntities>
                       <EntityCondition>
-                        <RelativeDistanceCondition entityRef="adversary" relativeDistanceType="cartesianDistance" value="200.0" freespace="false" rule="lessThan"/>
+                        <RelativeDistanceCondition entityRef="adversary_car_1" relativeDistanceType="cartesianDistance" value="200.0" freespace="false" rule="lessThan"/>
                       </EntityCondition>
                     </ByEntityCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="AdversaryVehicleGiveWayTeletransport" priority="overwrite">
+              <Action name="AdversaryVehicleGiveWayTeletransport">
+                <PrivateAction>
+                  <TeleportAction>
+                    <Position>
+                      <WorldPosition x="209.8" y="-159.4" z="0" h="-1.8675023"/>   
+                    </Position>
+                  </TeleportAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="AfterAdversaryVehicleGiveWayAccele" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleGiveWay" state="endTransition"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="AdversaryVehicleGiveWayStop" priority="overwrite">
+              <Action name="AdversaryVehicleGiveWayStop">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="1000" dynamicsDimension="time"/>
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="0"/>
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="AfterAdversaryVehicleGiveWay" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleGiveWay" state="endTransition"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+          </Maneuver>
+        </ManeuverGroup>
+        <ManeuverGroup name="ManeuverSequence_2" maximumExecutionCount="1">
+          <Actors selectTriggeringEntities="false">
+            <EntityRef entityRef="adversary_car_2"/>
+          </Actors>
+          <Maneuver name="AdversaryVehicleManeuver_2">
+            <Event name="AdversaryVehicleACCTeletransport" priority="overwrite">
+              <Action name="AdversaryVehicleACCTeletransport">
+                <PrivateAction>
+                  <TeleportAction>
+                    <Position>
+                      <WorldPosition x="212.6" y="-77.9" z="0" h="4.08407"/>   
+                    </Position>
+                  </TeleportAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="StartConditionAdversaryVehicleACC" delay="0" conditionEdge="rising">
+                    <ByEntityCondition>
+                      <TriggeringEntities triggeringEntitiesRule="any">
+                        <EntityRef entityRef="$vehicle_name"/>
+                      </TriggeringEntities>
+                      <EntityCondition>
+                        <TraveledDistanceCondition value="130.0"/>
+                      </EntityCondition>
+                    </ByEntityCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="AdversaryVehicleACCWait" priority="overwrite">
+              <Action name="AdversaryVehicleACCWait">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="10" dynamicsDimension="time"/>
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="0"/>
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="AfterAdversaryVehicleACCTeletransport" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleACCTeletransport" state="endTransition"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="AdversaryVehicleACC" priority="overwrite">
+              <Action name="AdversaryVehicleACC">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="25" dynamicsDimension="time"/>
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="$adversary_car_speed_2"/>
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="AfterAdversaryVehicleACCTeletransport" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleACCWait" state="endTransition"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="AdversaryVehicleACCStop" priority="overwrite">
+              <Action name="AdversaryVehicleACCStop">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="1000" dynamicsDimension="time"/>
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="0"/>
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="AfterAdversaryVehicleACC" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleACC" state="endTransition"/>
+                    </ByValueCondition>
                   </Condition>
                 </ConditionGroup>
               </StartTrigger>
