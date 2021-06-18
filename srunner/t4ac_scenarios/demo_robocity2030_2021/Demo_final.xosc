@@ -453,7 +453,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="1000" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="5" dynamicsDimension="time"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="3.5"/>
                       </SpeedActionTarget>
@@ -501,7 +501,7 @@
                       <EntityCondition>
                         <ReachPositionCondition tolerance="2.0">
                           <Position>
-                            <WorldPosition x="182.2" y="-170.1" z="0" h="180"/>  <!-- EGO_VEHICLE POSE TO STAR WALK PEDESTRIAN -->
+                            <WorldPosition x="180.2" y="-177.8" z="0" h="180"/>  <!-- EGO_VEHICLE POSE TO STAR WALK PEDESTRIAN -->
                           </Position>
                         </ReachPositionCondition>
                       </EntityCondition>
@@ -563,7 +563,7 @@
                       <EntityCondition>
                         <ReachPositionCondition tolerance="2.0">
                           <Position>
-                            <WorldPosition x="171.5" y="-168.3" z="0" h="0"/>  <!-- EGO_VEHICLE POSE TO STAR WALK PEDESTRIAN -->
+                            <WorldPosition x="170.3" y="-172.0" z="0" h="0"/>  <!-- EGO_VEHICLE POSE TO STAR WALK PEDESTRIAN -->
                           </Position>
                         </ReachPositionCondition>
                       </EntityCondition>
@@ -674,9 +674,9 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="20.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
+                      <SpeedActionDynamics dynamicsShape="step" value="10.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="1.5"/>  <!-- PEDESTRIAN SPEED (m/s) -->
+                        <AbsoluteTargetSpeed value="0.5"/>  <!-- PEDESTRIAN SPEED (m/s) -->
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
