@@ -3,7 +3,7 @@
   <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - Demo Robocity2030 2021 Scenario" author="J Felipe Arango"/>
   <ParameterDeclarations>
     <ParameterDeclaration name="adversary_car_speed_1" parameterType="double" value="8.33"/>
-    <ParameterDeclaration name="adversary_car_speed_2" parameterType="double" value="4.16"/>
+    <ParameterDeclaration name="adversary_car_speed_2" parameterType="double" value="4.5"/>
     <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
@@ -430,7 +430,7 @@
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
-                      <SpeedActionDynamics dynamicsShape="step" value="10" dynamicsDimension="time"/>
+                      <SpeedActionDynamics dynamicsShape="step" value="12" dynamicsDimension="time"/>
                       <SpeedActionTarget>
                         <AbsoluteTargetSpeed value="$adversary_car_speed_2"/>
                       </SpeedActionTarget>
@@ -455,7 +455,7 @@
                     <SpeedAction>
                       <SpeedActionDynamics dynamicsShape="step" value="1000" dynamicsDimension="time"/>
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="3"/>
+                        <AbsoluteTargetSpeed value="3.5"/>
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
