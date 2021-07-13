@@ -126,6 +126,78 @@
         </Properties>
       </Vehicle>
     </ScenarioObject>
+    <ScenarioObject name="car_parking_3">
+      <Vehicle name="vehicle.nissan.micra" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="simulation"/>
+          <Property name="color" value="255,10,20"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+    <ScenarioObject name="car_parking_4">
+      <Vehicle name="vehicle.toyota.prius" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="simulation"/>
+          <Property name="color" value="240,240,240"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+    <ScenarioObject name="car_parking_5">
+      <Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="simulation"/>
+          <Property name="color" value="22,100,210"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
+    <ScenarioObject name="car_parking_6">
+      <Vehicle name="vehicle.citroen.c3" vehicleCategory="car">
+        <ParameterDeclarations/>
+        <Performance maxSpeed="69.444" maxAcceleration="200" maxDeceleration="10.0"/>
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="2.1" length="4.5" height="1.8"/>
+        </BoundingBox>
+        <Axles>
+          <FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.8" positionX="3.1" positionZ="0.3"/>
+          <RearAxle maxSteering="0.0" wheelDiameter="0.6" trackWidth="1.8" positionX="0.0" positionZ="0.3"/>
+        </Axles>
+        <Properties>
+          <Property name="type" value="simulation"/>
+          <Property name="color" value="0,0,0"/>
+        </Properties>
+      </Vehicle>
+    </ScenarioObject>
     <ScenarioObject name="pedestrian_walking_1">
       <Pedestrian model="walker.pedestrian.0003" mass="90.0" name="walker.pedestrian.0002" pedestrianCategory="pedestrian">
         <ParameterDeclarations/>
@@ -245,6 +317,42 @@
             <TeleportAction>
               <Position>
                 <WorldPosition x="187.5" y="-107.6" z="0" h="1.27409"/>   <!-- INITIAL POSE  -->
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="car_parking_3">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="205.8" y="-105.2" z="0" h="4.39823"/>   <!-- INITIAL POSE  -->
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="car_parking_4">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="201.7" y="-118.4" z="0" h="4.39823"/>   <!-- INITIAL POSE  -->
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="car_parking_5">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="187.7" y="-162.9" z="0" h="4.39823"/>   <!-- INITIAL POSE  -->
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+        </Private>
+        <Private entityRef="car_parking_6">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <WorldPosition x="184.8" y="-171.6" z="0" h="4.39823"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -448,14 +556,14 @@
                 </ConditionGroup>
               </StartTrigger>
             </Event>
-            <Event name="AdversaryVehicleACCStop" priority="overwrite">
-              <Action name="AdversaryVehicleACCStop">
+            <Event name="AdversaryVehicleACCBraking" priority="overwrite">
+              <Action name="AdversaryVehicleACCBraking">
                 <PrivateAction>
                   <LongitudinalAction>
                     <SpeedAction>
                       <SpeedActionDynamics dynamicsShape="step" value="5" dynamicsDimension="time"/>
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="3.5"/>
+                        <AbsoluteTargetSpeed value="3.59"/>
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -466,6 +574,29 @@
                   <Condition name="AfterAdversaryVehicleACC" delay="0" conditionEdge="rising">
                     <ByValueCondition>
                       <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleACC" state="endTransition"/>
+                    </ByValueCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+            </Event>
+            <Event name="AdversaryVehicleACCStop" priority="overwrite">
+              <Action name="AdversaryVehicleACCStop">
+                <PrivateAction>
+                  <LongitudinalAction>
+                    <SpeedAction>
+                      <SpeedActionDynamics dynamicsShape="step" value="5" dynamicsDimension="time"/>
+                      <SpeedActionTarget>
+                        <AbsoluteTargetSpeed value="0"/>
+                      </SpeedActionTarget>
+                    </SpeedAction>
+                  </LongitudinalAction>
+                </PrivateAction>
+              </Action>
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="AfterAdversaryVehicleACCBraking" delay="0" conditionEdge="rising">
+                    <ByValueCondition>
+                      <StoryboardElementStateCondition storyboardElementType="action" storyboardElementRef="AdversaryVehicleACCBraking" state="endTransition"/>
                     </ByValueCondition>
                   </Condition>
                 </ConditionGroup>
@@ -547,7 +678,7 @@
                     <SpeedAction>
                       <SpeedActionDynamics dynamicsShape="step" value="6.0" dynamicsDimension="distance"/>  <!-- FIRST DINTANCE (m) BEFORE STOP -->
                       <SpeedActionTarget>
-                        <AbsoluteTargetSpeed value="1.5"/>  <!-- PEDESTRIAN SPEED (m/s) -->
+                        <AbsoluteTargetSpeed value="1.7"/>  <!-- PEDESTRIAN SPEED (m/s) -->
                       </SpeedActionTarget>
                     </SpeedAction>
                   </LongitudinalAction>
@@ -561,9 +692,9 @@
                         <EntityRef entityRef="$vehicle_name"/>
                       </TriggeringEntities>
                       <EntityCondition>
-                        <ReachPositionCondition tolerance="2.0">
+                        <ReachPositionCondition tolerance="4.0">
                           <Position>
-                            <WorldPosition x="170.3" y="-172.0" z="0" h="0"/>  <!-- EGO_VEHICLE POSE TO STAR WALK PEDESTRIAN -->
+                            <WorldPosition x="168.0" y="-179.0" z="0" h="0"/>  <!-- EGO_VEHICLE POSE TO STAR WALK PEDESTRIAN -->
                           </Position>
                         </ReachPositionCondition>
                       </EntityCondition>
