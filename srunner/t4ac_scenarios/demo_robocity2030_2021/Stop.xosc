@@ -2,7 +2,7 @@
 <OpenSCENARIO>
   <FileHeader revMajor="1" revMinor="0" date="2021-04-20T12:00:00" description="CARLA: t4ac - Stop Scenario for Robocity2030 2021" author="J Felipe Arango"/>
   <ParameterDeclarations>
-    <ParameterDeclaration name="leadingSpeed" parameterType="double" value="1.2"/>
+    <ParameterDeclaration name="leadingSpeed" parameterType="double" value="4.4"/>
     <ParameterDeclaration name="vehicle_name" parameterType="string" value="ego_vehicle" />   <!-- hero  ;  ego_vehicle -->
   </ParameterDeclarations>
   <CatalogLocations/>
@@ -158,7 +158,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-28.4" y="-390.3" z="0" h="3.9968"/>
+                <WorldPosition x="-28.4" y="-392.9" z="0" h="3.9968"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -186,7 +186,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-176.6" y="-451.4" z="0.0" h="5.63741"/>
+                <WorldPosition x="-174.7" y="-452.9" z="0.0" h="5.63741"/>
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -222,7 +222,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-85.1" y="-462.3" z="0.3" h="4.03171"/>   <!-- INITIAL POSE  -->
+                <WorldPosition x="-83.6" y="-463.8" z="0.3" h="4.03171"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -231,7 +231,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-95.7" y="-475.7" z="0.3" h="4.04916"/>   <!-- INITIAL POSE  -->
+                <WorldPosition x="-94.1" y="-476.4" z="0.3" h="4.04916"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
@@ -240,7 +240,7 @@
           <PrivateAction>
             <TeleportAction>
               <Position>
-                <WorldPosition x="-105.5" y="-473.2" z="0.3" h="0.925025"/>   <!-- INITIAL POSE  -->
+                <WorldPosition x="-103.8" y="-474.5" z="0.3" h="0.925025"/>   <!-- INITIAL POSE  -->
               </Position>
             </TeleportAction>
           </PrivateAction>
