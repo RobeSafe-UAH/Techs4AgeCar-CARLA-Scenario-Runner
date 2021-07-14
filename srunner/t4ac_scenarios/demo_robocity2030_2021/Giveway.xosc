@@ -7,7 +7,7 @@
   </ParameterDeclarations>
   <CatalogLocations/>
   <RoadNetwork>
-    <LogicFile filepath="CampusUAH_v1_5"/>
+    <LogicFile filepath="CampusUAH_v1_7"/>
     <SceneGraphFile filepath=""/>
   </RoadNetwork>
   <Entities>
